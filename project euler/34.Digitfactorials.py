@@ -1,3 +1,6 @@
+# Problema: https://projecteuler.net/problem=34
+# Math
+
 fact = []
 def init():
 	fact.append(1)
