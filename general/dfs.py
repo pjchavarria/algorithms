@@ -1,10 +1,10 @@
 def solvePackageDependency(array):
-    order = len(array)
+    order = [len(array)]
     for node in array:
         node.explored = False
     for node in array:
         if node.explored is False:
-            order = DFS(node, order)
+            DFS(node, order)
 
     array.sort(key=lambda node: node.order)
     return array
@@ -14,10 +14,9 @@ def DFS(node, order):
     node.explored = True
     for edge in node.dependencies:
         if edge.explored is False:
-            order = DFS(edge, order)
-    node.order = order
-    order -= 1
-    return order
+            DFS(edge, order)
+    node.order = order[0]
+    order[0] -= 1
 
 
 class Package:
